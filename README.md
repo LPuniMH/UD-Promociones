@@ -13,5 +13,5 @@ Funcionalidades implementadas:
 Pasos para ejecutar:
 1. tener mysql corriendo localmente.
 2. clonar o descargar el proyecto y ejecutarlo en el ide.
-3. el servicio se levanta en el puerto 8083, creando la tabla promociones_db automáticamente.
+3. el servicio se levanta en el puerto 8084, creando la tabla promociones_db automáticamente.
 4. probar los endpoints en postman.
