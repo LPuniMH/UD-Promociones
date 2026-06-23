@@ -1,0 +1,25 @@
+services:
+  mysql_promociones:
+    image: mysql:latest
+    container_name: mysql_promociones
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=promociones_db
+    volumes:
+      - mysql_promociones_data:/var/lib/mysql
+    
+  app_promociones:
+    build: .
+    container_name: app_promociones
+    restart: on-failure
+    depends_on:
+      - mysql_promociones
+    ports:
+      - "8084:8084"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql_promociones:3306/promociones_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+
+volumes:
+  mysql_promociones_data:
